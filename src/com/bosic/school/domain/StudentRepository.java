@@ -5,5 +5,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StudentRepository extends JpaRepository<Student, Integer>{
-	Page<Student> findAllByStudentName(String studentName, Pageable pageable);
+	Page<Student> findAllByStudentNameLike(String studentName, Pageable pageable);
 }

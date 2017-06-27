@@ -37,6 +37,6 @@ public class StudentService {
 	}
 	
 	public Page<Student> findAllByStudentName(String studentName, Pageable pageable){
-		return studentRepository.findAllByStudentName(studentName, pageable);
+		return studentRepository.findAllByStudentNameLike(studentName, pageable);
 	}
 }
