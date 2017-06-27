@@ -17,12 +17,4 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/index/{id}")
-	public String index(@PathVariable Integer id, Model model) throws Exception {
-		Page<User> users = userService.findAll(new PageRequest(id-1, 10));
-		System.out.println(users);
-		model.addAttribute("users", users);
-		
-		return "user/index";
-	}
 }
