@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="students")
 public class Student implements Serializable{
@@ -17,13 +19,14 @@ public class Student implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@Column(columnDefinition="student_number")
+	@Column(name="student_number")
 	private String studentNumber;
-	@Column(columnDefinition="student_name")
+	@Column(name="student_name")
 	private String studentName;
 	@Column
 	private String gender;
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date birthday;
 	@Column
 	private String mobile;

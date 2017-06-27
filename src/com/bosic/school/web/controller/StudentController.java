@@ -17,7 +17,7 @@ public class StudentController{
 	@Autowired
 	private StudentService studentService;
 
-	@RequestMapping(value={"/index", "/index/{id}"})
+	@RequestMapping(value={"", "/index", "/index/{id}"})
 	public String index(
 			@PathVariable(required=false) Integer id,
 			Model model) throws Exception {
@@ -25,14 +25,13 @@ public class StudentController{
 		
 		int pageSize = 20;
 		
-		Page<Student> students = studentService.findAll(new PageRequest((id-1) * pageSize, pageSize));
-	
+		Page<Student> students = studentService.findAll(new PageRequest((id-1), pageSize));
 		model.addAttribute("students", students);
 		return "student/index";
 	}
 	
 	@RequestMapping("/create")
-	public String create(@PathVariable Integer id){
+	public String create(){
 		return "student/create";
 	}
 	
@@ -40,7 +39,7 @@ public class StudentController{
 	public String edit(@PathVariable Integer id, Model model){
 		Student student = studentService.findOne(id);
 		
-		model.addAttribute("student", student);
+		model.addAttribute("model", student);
 		
 		return "student/edit";
 	}
@@ -50,7 +49,7 @@ public class StudentController{
 		
 		studentService.save(student);
 		
-		return "redirect:/user/index";
+		return "redirect:/student/index";
 	}
 	
 	@RequestMapping("/delete/{id}")
@@ -60,6 +59,6 @@ public class StudentController{
 		
 		studentService.delete(id);
 		
-		return "redirect:/user/index";
+		return "redirect:/student/index";
 	}
 }

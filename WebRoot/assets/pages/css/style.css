@@ -68,7 +68,11 @@ body,*{
 			margin:2px;
 			padding:0 4px;
 		}
+		.page li{
+			width:20px;
+		}
 		.button li.space{
+			width:80px;
 			color:blue;
 			background-color:white;
 			border:0;
@@ -85,6 +89,8 @@ body,*{
 			color:blue;
 			text-decoration:none;
 		}
+		
+		
 	#footer{
 		width:100%;
 		border:1px #9AC0CD solid;

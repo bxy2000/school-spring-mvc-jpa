@@ -65,7 +65,7 @@
 						<th>城市</th>
 						<th>住址</th>
 					</tr>
-					<c:forEach var="student" items="${model.rows }" varStatus="status">
+					<c:forEach var="student" items="${students.content }" varStatus="status">
 						<c:choose>
 							<c:when test="${status.index % 2 == 1 }">
 								<tr style="background-color: #E0EEE0">
@@ -95,19 +95,25 @@
 					</c:forEach>
 					<tr>
 						<td colspan="11">
-							<ul class="button">
-								<li><a href="${pageContext.request.contextPath}/student/index/${model.first}?word=${param.word}">首页</a></li>
-								<li><a href="${pageContext.request.contextPath}/student/index/${model.prev}?word=${param.word}">上一页</a></li>
-								<li class="space">第${model.index}/${model.total}页</li>
-								<li><a href="${pageContext.request.contextPath}/student/index/${model.next}?word=${param.word}">下一页</a></li>
-								<li><a href="${pageContext.request.contextPath}/student/index/${model.last}?word=${param.word}">末页</a></li>
+							<ul class="button page">
+								<li class="space">第${students.number+1}/${students.totalPages}页</li>
+								<c:if test="${!students.first }">
+									<li><a href="${pageContext.request.contextPath}/student/index/1?word=${param.word}">&lt;&lt;</a></li>
+								</c:if>
+								<c:forEach var="p" begin="1" end="${students.totalPages }" step="1">
+									<li><a href="${pageContext.request.contextPath}/student/index/${p}?word=${param.word}">${p }</a></li>									
+								</c:forEach>
+								<c:if test="${!students.last }">
+									<li><a href="${pageContext.request.contextPath}/student/index/${students.totalPages}?word=${param.word}">&gt;&gt;</a></li>
+								</c:if>
 							</ul>
 						</td>
 					</tr>
 				</table>
 			</form>
 		</div>
+		<jsp:include page="../share/footer.jsp" />
 	</div>
-	<jsp:include page="../share/footer.jsp" />
+	
 </body>
 </html>

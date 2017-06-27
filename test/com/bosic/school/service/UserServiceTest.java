@@ -16,7 +16,7 @@ public class UserServiceTest {
 
 	@Test
 	public void testLogin(){
-		boolean result = userService.login("admin", "123456");
+		boolean result = userService.login("admin", "1");
 		
 		System.out.println(result);
 	}
